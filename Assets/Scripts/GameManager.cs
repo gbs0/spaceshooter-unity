@@ -97,6 +97,6 @@ public class GameManager : MonoBehaviour {
 	public void RestartGamePlay()
 	{
 		// Reset the scene.
-		SceneManager.LoadScene("Demo");
+		SceneManager.LoadScene("Game");
 	}
 }
