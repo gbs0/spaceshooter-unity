@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	void Start () 
 	{
 		// Set the default state to 'Opening'.
-		GMState = GameManagerState.Gameplay;
+		GMState = GameManagerState.Opening;
 		UpdateGameManagerState ();
 	}
 
