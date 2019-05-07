@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour {
 
-	public GameObject[] StageObjects; // An array of BG prefabs.
+	public Sprite[] StageObjects; // An array of BG prefabs.
 
 	// Queue to hold the objects.
-	Queue<GameObject> availableObjects = new Queue<GameObject>();
+	Queue<Sprite> availableObjects = new Queue<Sprite>();
 
 	// Use this for initialization
 	void Start () {
