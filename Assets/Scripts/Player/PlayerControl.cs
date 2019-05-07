@@ -4,6 +4,8 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 
+	Transform actualPosition;
+
 	public GameObject GameManagerGO;
 	public GameObject explosionPrefab; // This is the explosion prefab.
 	public GameObject shieldsObject; // This is the shields prefab.
@@ -37,6 +39,7 @@ public class PlayerControl : MonoBehaviour {
 		gameObject.SetActive (true);
 		// Set our starting position.
 		transform.position = new Vector2 (0, -2.5f);
+		t = GetComponent<Transform>();
 	}
 	
 	void Update () 
@@ -74,6 +77,7 @@ public class PlayerControl : MonoBehaviour {
 		max.y = max.y - 0.285f; 
 		min.y = min.y + 0.285f; 
 		// This makes sure our player never leaves the screen area.
+		
 		GetComponent<Rigidbody2D>().position = new Vector2 
 			(
 				Mathf.Clamp (GetComponent<Rigidbody2D>().position.x, min.x, max.x),  //X
