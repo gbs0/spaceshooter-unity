@@ -81,17 +81,10 @@ public class PlayerControl : MonoBehaviour {
 		min.y = min.y + 0.285f; 
 		// This makes sure our player never leaves the screen area.
 		
-		float mv  = Input.GetAxis("Horizontal");
-		float vert  = Input.GetAxis("Vertical");
-		Debug.Log(mv);
+		float moveHorizontal  = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+		float moveVertical  = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-		if (mv != 0 ) {
-      GetComponent<Rigidbody2D>().position = new Vector2(
-				Mathf.Clamp (GetComponent<Rigidbody2D>().position.x, min.x, max.x),  //X
-				Mathf.Clamp (GetComponent<Rigidbody2D>().position.y, min.y, max.y)	 //Y
-			);
-            //actualPosition.Translate(0.1f, 0, 0);                        // Add new translates for x axis
-    }
+		gameObject.transform.Translate(moveHorizontal, moveVertical, 0);
 
 		
 		// This will limit the firing rate of the player, and fire the weapon whenever the screen is touched.
