@@ -7,7 +7,7 @@ public class BackgroundController : MonoBehaviour {
 	public GameObject[] BGObjects; // An array of BG prefabs.
 
 	// Queue to hold the objects.
-	Queue<GameObject> availableObjects = new Queue<GameObject>();
+	Queue<GameObject>availableObjects = new Queue<GameObject>();
 
 	// Use this for initialization
 	void Start () 
