@@ -39,7 +39,7 @@ public class PlayerControl : MonoBehaviour {
 		gameObject.SetActive (true);
 		// Set our starting position.
 		transform.position = new Vector2 (0, -2.5f);
-		t = GetComponent<Transform>();
+		actualPosition = GetComponent<Transform>();
 	}
 	
 	void Update () 
@@ -68,9 +68,12 @@ public class PlayerControl : MonoBehaviour {
 // 		}
 // #endif
 
+		Vector2 max = actualPosition.position;
+
 		Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0,0));
-		Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
+		// Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
 		
+	
 		max.x = max.x - 0.225f; 
 		min.x = min.x + 0.225f; 
 		
@@ -78,11 +81,19 @@ public class PlayerControl : MonoBehaviour {
 		min.y = min.y + 0.285f; 
 		// This makes sure our player never leaves the screen area.
 		
-		GetComponent<Rigidbody2D>().position = new Vector2 
-			(
+		float mv  = Input.GetAxis("Horizontal");
+		float vert  = Input.GetAxis("Vertical");
+		Debug.Log(mv);
+
+		if (mv != 0 ) {
+      GetComponent<Rigidbody2D>().position = new Vector2(
 				Mathf.Clamp (GetComponent<Rigidbody2D>().position.x, min.x, max.x),  //X
 				Mathf.Clamp (GetComponent<Rigidbody2D>().position.y, min.y, max.y)	 //Y
 			);
+            //actualPosition.Translate(0.1f, 0, 0);                        // Add new translates for x axis
+    }
+
+		
 		// This will limit the firing rate of the player, and fire the weapon whenever the screen is touched.
 		if (fireRate == 0f) {
 			if (Input.GetKey(KeyCode.Space)) {
