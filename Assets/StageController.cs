@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour {
 
-	public GameObject[] BGObjects; // An array of BG prefabs.
+	public GameObject[] StageObjects; // An array of BG prefabs.
 
 	// Queue to hold the objects.
 	Queue<GameObject> availableObjects = new Queue<GameObject>();
@@ -12,10 +12,10 @@ public class StageController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		// Add the available objects to the queue.
-		availableObjects.Enqueue(BGObjects [0]); 
-		availableObjects.Enqueue(BGObjects [1]);
-		availableObjects.Enqueue(BGObjects [2]);
-		availableObjects.Enqueue(BGObjects [3]);
+		availableObjects.Enqueue(StageObjects [0]); 
+		availableObjects.Enqueue(StageObjects [1]);
+		availableObjects.Enqueue(StageObjects [2]);
+		availableObjects.Enqueue(StageObjects [3]);
 	}
 }
 
