@@ -79,6 +79,7 @@
      <Compile Include="Assets\Scripts\Star.cs" />
      <Compile Include="Assets\Scripts\StarGenerator.cs" />
      <Compile Include="Assets\Scripts\TimeCounter.cs" />
+     <Compile Include="Assets\StageController.cs" />
      <None Include="Assets\README.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/gpineappleb/Desktop/c9_Backup/spaceshooter-unity/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
