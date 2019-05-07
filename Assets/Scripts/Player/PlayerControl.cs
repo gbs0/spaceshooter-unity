@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour {
 	public GameObject explosionPrefab; // This is the explosion prefab.
 	public GameObject shieldsObject; // This is the shields prefab.
 
-	// These are the player bullet prefabs.
+	// Player bullet prefabs.
 	public GameObject PlayerBulletBlue;
 	public GameObject PlayerBulletRed;
 
@@ -82,17 +82,17 @@ public class PlayerControl : MonoBehaviour {
 		// This will limit the firing rate of the player, and fire the weapon whenever the screen is touched.
 		if (fireRate == 0f) {
 			if (Input.GetKey(KeyCode.Space)) {
-				FireWeapon ();
+				FireWeapon();
 			}
 		} else {
 			if (Input.GetKey(KeyCode.Space) && Time.time > timeToFire) {
 				timeToFire = Time.time + 1f / fireRate;
-				FireWeapon ();
+				FireWeapon();
 			}
 		}
 	}
 
-	void FireWeapon ()
+	void FireWeapon()
 	{
 		// Play the laser sound effect.
 		laserSound.Play();
