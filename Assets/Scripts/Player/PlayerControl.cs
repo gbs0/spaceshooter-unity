@@ -49,21 +49,21 @@ public class PlayerControl : MonoBehaviour {
 			ResetWeapon ();
 		}
 
-#if !MOBILE_INPUT
-		// The player will follow the current mousePosition.
-		{
-			var pos = Input.mousePosition;
-			pos.z = transform.position.z - Camera.main.transform.position.z;
-			pos = Camera.main.ScreenToWorldPoint(pos);
-			transform.position = Vector3.Lerp(transform.position, pos, moveSpeed * Time.deltaTime);
-		}
-#else
-		// These are the touchScreen controls.
-		if(Input.touchCount > 0) {
-			Vector2  touchDeltaPosition =  Input.GetTouch(0).deltaPosition/30;
-			transform.Translate (touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
-		}
-#endif
+// #if !MOBILE_INPUT
+// 		// The player will follow the current mousePosition.
+// 		{
+// 			var pos = Input.mousePosition;
+// 			pos.z = transform.position.z - Camera.main.transform.position.z;
+// 			pos = Camera.main.ScreenToWorldPoint(pos);
+// 			transform.position = Vector3.Lerp(transform.position, pos, moveSpeed * Time.deltaTime);
+// 		}
+// #else
+// 		// These are the touchScreen controls.
+// 		if(Input.touchCount > 0) {
+// 			Vector2  touchDeltaPosition =  Input.GetTouch(0).deltaPosition/30;
+// 			transform.Translate (touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
+// 		}
+// #endif
 
 		Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0,0));
 		Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
