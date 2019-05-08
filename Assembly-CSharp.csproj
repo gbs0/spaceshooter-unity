@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\BGObject.cs" />
      <Compile Include="Assets\Scripts\ComboText.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\Scripts\PowerUpControl.cs" />
      <Compile Include="Assets\Scripts\PowerUpSpawner.cs" />
      <Compile Include="Assets\Scripts\ScrollDown.cs" />
+     <Compile Include="Assets\Scripts\StageController.cs" />
      <Compile Include="Assets\Scripts\Star.cs" />
      <Compile Include="Assets\Scripts\StarGenerator.cs" />
      <Compile Include="Assets\Scripts\TimeCounter.cs" />

@@ -4,11 +4,13 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 
+	Transform actualPosition;
+
 	public GameObject GameManagerGO;
 	public GameObject explosionPrefab; // This is the explosion prefab.
 	public GameObject shieldsObject; // This is the shields prefab.
 
-	// These are the player bullet prefabs.
+	// Player bullet prefabs.
 	public GameObject PlayerBulletBlue;
 	public GameObject PlayerBulletRed;
 
@@ -37,6 +39,7 @@ public class PlayerControl : MonoBehaviour {
 		gameObject.SetActive (true);
 		// Set our starting position.
 		transform.position = new Vector2 (0, -2.5f);
+		actualPosition = GetComponent<Transform>();
 	}
 	
 	void Update () 
@@ -49,50 +52,55 @@ public class PlayerControl : MonoBehaviour {
 			ResetWeapon ();
 		}
 
-#if !MOBILE_INPUT
-		// The player will follow the current mousePosition.
-		{
-			var pos = Input.mousePosition;
-			pos.z = transform.position.z - Camera.main.transform.position.z;
-			pos = Camera.main.ScreenToWorldPoint(pos);
-			transform.position = Vector3.Lerp(transform.position, pos, moveSpeed * Time.deltaTime);
-		}
-#else
-		// These are the touchScreen controls.
-		if(Input.touchCount > 0) {
-			Vector2  touchDeltaPosition =  Input.GetTouch(0).deltaPosition/30;
-			transform.Translate (touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
-		}
-#endif
+// #if !MOBILE_INPUT
+// 		// The player will follow the current mousePosition.
+// 		{
+// 			var pos = Input.mousePosition;
+// 			pos.z = transform.position.z - Camera.main.transform.position.z;
+// 			pos = Camera.main.ScreenToWorldPoint(pos);
+// 			transform.position = Vector3.Lerp(transform.position, pos, moveSpeed * Time.deltaTime);
+// 		}
+// #else
+// 		// These are the touchScreen controls.
+// 		if(Input.touchCount > 0) {
+// 			Vector2  touchDeltaPosition =  Input.GetTouch(0).deltaPosition/30;
+// 			transform.Translate (touchDeltaPosition.x * moveSpeed * Time.deltaTime, touchDeltaPosition.y * moveSpeed * Time.deltaTime, 0);
+// 		}
+// #endif
+
+		Vector2 max = actualPosition.position;
 
 		Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0,0));
-		Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
+		// Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
 		
+	
 		max.x = max.x - 0.225f; 
 		min.x = min.x + 0.225f; 
 		
 		max.y = max.y - 0.285f; 
 		min.y = min.y + 0.285f; 
 		// This makes sure our player never leaves the screen area.
-		GetComponent<Rigidbody2D>().position = new Vector2 
-			(
-				Mathf.Clamp (GetComponent<Rigidbody2D>().position.x, min.x, max.x),  //X
-				Mathf.Clamp (GetComponent<Rigidbody2D>().position.y, min.y, max.y)	 //Y
-			);
+		
+		float moveHorizontal  = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+		float moveVertical  = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+
+		gameObject.transform.Translate(moveHorizontal, moveVertical, 0);
+
+		
 		// This will limit the firing rate of the player, and fire the weapon whenever the screen is touched.
 		if (fireRate == 0f) {
-			if (Input.GetMouseButton (0)) {
-				FireWeapon ();
+			if (Input.GetKey(KeyCode.Space)) {
+				FireWeapon();
 			}
 		} else {
-			if (Input.GetMouseButton (0) && Time.time > timeToFire) {
+			if (Input.GetKey(KeyCode.Space) && Time.time > timeToFire) {
 				timeToFire = Time.time + 1f / fireRate;
-				FireWeapon ();
+				FireWeapon();
 			}
 		}
 	}
 
-	void FireWeapon ()
+	void FireWeapon()
 	{
 		// Play the laser sound effect.
 		laserSound.Play();

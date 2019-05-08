@@ -7,15 +7,16 @@ public class BackgroundController : MonoBehaviour {
 	public GameObject[] BGObjects; // An array of BG prefabs.
 
 	// Queue to hold the objects.
-	Queue<GameObject> availableObjects = new Queue<GameObject>();
+	Queue<GameObject>availableObjects = new Queue<GameObject>();
 
 	// Use this for initialization
 	void Start () 
 	{
 		// Add the available objects to the queue.
-		availableObjects.Enqueue (BGObjects [0]);
-		availableObjects.Enqueue (BGObjects [1]);
-		availableObjects.Enqueue (BGObjects [2]);
+		availableObjects.Enqueue(BGObjects [0]); 
+		availableObjects.Enqueue(BGObjects [1]);
+		availableObjects.Enqueue(BGObjects [2]);
+		availableObjects.Enqueue(BGObjects [3]);
 
 		// Call the MoveObjectDown function every 20 seconds.
 		InvokeRepeating ("MoveObjectDown", 0, 20f);	
@@ -33,8 +34,7 @@ public class BackgroundController : MonoBehaviour {
 
 		// Get an object from the queue.
 		GameObject aPlanet = availableObjects.Dequeue ();
-		// Set the objects isMoving flag to true.
-		aPlanet.GetComponent<BGObject> ().isMoving = true;
+		aPlanet.GetComponent<BGObject>().isMoving = true; // Set the objects isMoving flag to true.
 	}
 
 	// Function to enqueue objects that are below the screen and not moving.
