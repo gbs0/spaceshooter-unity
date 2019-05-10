@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\BGObject.cs" />
      <Compile Include="Assets\Scripts\ComboText.cs" />
