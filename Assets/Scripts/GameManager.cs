@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject StageBackground;
 	public GameObject PlanetController;
 	public GameObject StarGenerator;
+	public GameObject NebulaController;
 
 	public enum GameManagerState
 	{
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour {
 		switch (GMState) 
 		{
 		case GameManagerState.Opening:
+			NebulaController.SetActive(false);
 			StarGenerator.SetActive(false);
 			PlanetController.SetActive(false);
 			// Show the cursor.
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour {
 			StageBackground.SetActive(true);
 				break;
 		case GameManagerState.Gameplay:
+			NebulaController.SetActive(true);
 			StarGenerator.SetActive(true);
 			PlanetController.SetActive(true);
 			StageBackground.SetActive(false);
