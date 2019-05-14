@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	float maxSpawnRateInSeconds = 5f;
 	
-	void SpawnRandomEnemy()
+	void SpawnRandomBoss()
 	{
 		// This is the bottom left most point of the screen.
 		Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0,0));
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour {
 		} else
 			spawnInSeconds = 1f;
 		// Spawn an enemy according the the timer.
-		Invoke ("SpawnRandomEnemy", spawnInSeconds);
+		Invoke ("SpawnRandomBoss", spawnInSeconds);
 	}
 	// This will increase the spawn rate over time.
 	void IncreaseSpawnRate()
@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour {
 	{
 		maxSpawnRateInSeconds = 5f;
 
-		Invoke ("SpawnRandomEnemy", maxSpawnRateInSeconds);
+		Invoke ("SpawnRandomBoss", maxSpawnRateInSeconds);
 
 		//Increase spawn rate of ships every 30 Seconds.
 		InvokeRepeating ("IncreaseSpawnRate", 0f, 30f);
@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour {
 	// This function stops the enemy spawner.
 	public void UnscheduleEnemySpawner()
 	{
-		CancelInvoke ("SpawnRandomEnemy");
+		CancelInvoke ("SpawnRandomBoss");
 		CancelInvoke ("IncreaseSpawnRate");
 	}
 }
