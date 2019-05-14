@@ -26,6 +26,8 @@ public class BackgroundController : MonoBehaviour {
 	// so that the object will start to scroll down the screen.
 	void MoveObjectDown()
 	{
+		print("I should go down!");
+		
 		EnqueueObjects ();
 
 		// If the queue is empty, then return.

@@ -60,14 +60,13 @@ public class HazardBase : MonoBehaviour
 		}
 	}
 
-	// Update is called once per frame
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		// Detect collision of the hazard with the player bullet.
 		if ((col.tag == "PlayerBullet")) {
 			
 			// Flash sprite on trigger activate.
-			StartCoroutine (FlashSprite ());
+			StartCoroutine (FlashSprite());
 
 			curHealth -= 25; // Subtract 25 health.
 		}
@@ -88,7 +87,7 @@ public class HazardBase : MonoBehaviour
 
 	void PlayExplosion ()
 	{
-		GameObject Explosion = (GameObject)Instantiate (hazardExplosion);
+		GameObject Explosion = (GameObject)Instantiate(hazardExplosion);
 		Explosion.transform.position = transform.position;
 		// Play power-up sound.
 		hazardDestroySound.Play ();

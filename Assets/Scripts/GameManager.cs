@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject GameOver;
 	public GameObject GameTitle;
 	public GameObject StageBackground;
+	public GameObject PlanetController;
 
 	public enum GameManagerState
 	{

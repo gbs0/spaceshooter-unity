@@ -19,7 +19,7 @@ public class HazardSpawner : MonoBehaviour {
 		aHazard.transform.position = new Vector2 (Random.Range (min.x, max.x), max.y);
 		
 		// Schedule when to spawn the next hazard.
-		ScheduleNextHazardSpawn ();
+		ScheduleNextHazardSpawn();
 	}
 	
 	void ScheduleNextHazardSpawn()
@@ -50,8 +50,8 @@ public class HazardSpawner : MonoBehaviour {
 		
 		Invoke ("SpawnRandomHazard", maxSpawnRateInSeconds);
 		
-		//Increase spawn rate of ships every 30 Seconds.
-		InvokeRepeating ("IncreaseSpawnRate", 0f, 30f);
+		//Increase spawn rate of ships every 15 Seconds.
+		InvokeRepeating ("IncreaseSpawnRate", 0f, 15f);
 	}
 	// This function stops the hazard spawner.
 	public void UnscheduleHazardSpawner()
