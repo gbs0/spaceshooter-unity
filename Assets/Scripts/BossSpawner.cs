@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemySpawner : MonoBehaviour {
+public class BossSpawner : MonoBehaviour {
 	
 	public GameObject[] bossShip;
 
