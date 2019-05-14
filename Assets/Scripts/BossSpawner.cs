@@ -15,14 +15,13 @@ public class EnemySpawner : MonoBehaviour {
 		Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1,1));
 		
 		// Create an enemy as a new gameObject from the available gameObjects in the array.
-		GameObject anEnemy = Instantiate (bossShip [UnityEngine.Random.Range (0, bossShip.Length)]);
-		anEnemy.transform.position = new Vector2 (Random.Range (min.x, max.x), max.y);
+		GameObject anBoss = Instantiate (bossShip [UnityEngine.Random.Range (0, bossShip.Length)]);
+		anBoss.transform.position = new Vector2 (Random.Range (min.x, max.x), max.y);
 		
-		// Schedule when to spawn the next enemy.
-		ScheduleNextEnemySpawn ();
+		ScheduleNextBossSpawn();
 	}
 
-	void ScheduleNextEnemySpawn()
+	void ScheduleNextBossSpawn()
 	{
 		float spawnInSeconds;
 
