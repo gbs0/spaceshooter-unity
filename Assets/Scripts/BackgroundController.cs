@@ -5,7 +5,7 @@ using System.Collections.Generic; // For the Queue.
 public class BackgroundController : MonoBehaviour {
 
 	public GameObject[] BGObjects; // An array of BG prefabs.
-	public float yStore;
+	public float yStore = 0.03f * -1;
 	public int planetNumber;
 
 	// Queue to hold the objects.
