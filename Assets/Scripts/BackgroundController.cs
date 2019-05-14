@@ -31,17 +31,11 @@ public class BackgroundController : MonoBehaviour {
 		transform.Translate(new Vector2(0,yStore * Time.deltaTime));
 
 		if (BGObjects[planetNumber].transform.position.y < -7) {
-
 			BGObjects[planetNumber].transform.position = new Vector3(BGObjects[planetNumber].transform.position.x,3.75f,0);	
-
 			planetNumber++;
-
-
-
 		}
 
 		if(planetNumber == 3){
-
 			planetNumber = 0;
 		}
 
