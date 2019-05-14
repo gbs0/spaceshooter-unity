@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour {
 	
 	public GameObject[] bossShip;
 
-	float maxSpawnRateInSeconds = 5f;
+	float maxSpawnRateInSeconds = 10;
 	
 	void SpawnRandomBoss()
 	{
@@ -49,8 +49,8 @@ public class EnemySpawner : MonoBehaviour {
 
 		Invoke ("SpawnRandomBoss", maxSpawnRateInSeconds);
 
-		//Increase spawn rate of ships every 30 Seconds.
-		InvokeRepeating ("IncreaseSpawnRate", 0f, 30f);
+		//Increase spawn rate of ships every 60 Seconds.
+		InvokeRepeating ("IncreaseSpawnRate", 0f, 60f);
 	}
 	// This function stops the enemy spawner.
 	public void UnscheduleEnemySpawner()
