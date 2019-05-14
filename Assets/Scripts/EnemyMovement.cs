@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 		if (chasePlayer == true) {
 			if (player == null) {
 				// Find the player's ship using its tag.
-				GameObject go = GameObject.FindGameObjectWithTag ("PlayerShip");
+				GameObject go = GameObject.FindGameObjectWithTag("PlayerShip");
 
 				if (go != null) {
 					player = go.transform;
