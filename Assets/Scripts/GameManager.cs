@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject GameTitle;
 	public GameObject StageBackground;
 	public GameObject PlanetController;
+	public GameObject StarGenerator;
 
 	public enum GameManagerState
 	{
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour {
 		switch (GMState) 
 		{
 		case GameManagerState.Opening:
+			StarGenerator.SetActive(false);
+			PlanetController.SetActive(false);
 			// Show the cursor.
 			Cursor.visible = true;
 			// Hide the game over text.
@@ -52,6 +55,8 @@ public class GameManager : MonoBehaviour {
 			StageBackground.SetActive(true);
 				break;
 		case GameManagerState.Gameplay:
+			StarGenerator.SetActive(true);
+			PlanetController.SetActive(true);
 			StageBackground.SetActive(false);
 			// Hide the cursor.
 			// Cursor.visible = false;
@@ -81,6 +86,7 @@ public class GameManager : MonoBehaviour {
 			powerUpSpawner.GetComponent<PowerUpSpawner>().UnschedulePowerUpSpawner();
 			// Display the game over text.
 			GameOver.SetActive (true);
+			StarGenerator.SetActive(false);
 			// Change the game state to 'Opening' after 5 seconds.
 			Invoke("RestartGamePlay", 5f);
 			break;

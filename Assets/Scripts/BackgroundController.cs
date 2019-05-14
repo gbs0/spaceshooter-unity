@@ -19,7 +19,7 @@ public class BackgroundController : MonoBehaviour {
 		availableObjects.Enqueue(BGObjects [3]);
 
 		// Call the MoveObjectDown function every 20 seconds.
-		InvokeRepeating ("MoveObjectDown", 0, 20f);	
+		InvokeRepeating("MoveObjectDown", 0, 20f);	
 	}
 
 	// Function to dequeue an object, and set its isMoving flag to true
@@ -27,7 +27,7 @@ public class BackgroundController : MonoBehaviour {
 	void MoveObjectDown()
 	{
 		print("I should go down!");
-		
+
 		EnqueueObjects ();
 
 		// If the queue is empty, then return.
