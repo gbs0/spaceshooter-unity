@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject powerUpSpawner;
 	public GameObject GameOver;
 	public GameObject GameTitle;
+	public GameObject StageBackground;
 
 	public enum GameManagerState
 	{
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour {
 	void Start () 
 	{
 		// Set the default state to 'Opening'.
-		GMState = GameManagerState.Gameplay;
+		GMState = GameManagerState.Opening;
 		UpdateGameManagerState ();
 	}
 
@@ -46,10 +47,13 @@ public class GameManager : MonoBehaviour {
 			GameTitle.SetActive(true);
 			// Show the 'Play' button.
 			playButton.SetActive(true);
+			// Show Stage Background
+			StageBackground.SetActive(true);
 				break;
 		case GameManagerState.Gameplay:
+			StageBackground.SetActive(false);
 			// Hide the cursor.
-			Cursor.visible = false;
+			// Cursor.visible = false;
 			// Hide the game titles.
 			GameTitle.SetActive(false);
 			// Hide the "Play" button during gameplay.
