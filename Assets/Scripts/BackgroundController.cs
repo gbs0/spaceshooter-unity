@@ -5,7 +5,7 @@ using System.Collections.Generic; // For the Queue.
 public class BackgroundController : MonoBehaviour {
 
 	public GameObject[] BGObjects; // An array of BG prefabs.
-	public float yStore = 0.03f * -1;
+	public float yStore;
 	public int planetNumber;
 
 	// Queue to hold the objects.
@@ -22,7 +22,7 @@ public class BackgroundController : MonoBehaviour {
 
 		// Call the MoveObjectDown function every 20 seconds.
 		//InvokeRepeating("MoveObjectDown", 0, 1f);	
-		yStore = -5;
+		yStore = -1f;
 	}
 
 
