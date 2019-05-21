@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
 	
+	public GameObject gameManager;
 	public GameObject[] enemyShips;
 
 	float maxSpawnRateInSeconds = 5f;
