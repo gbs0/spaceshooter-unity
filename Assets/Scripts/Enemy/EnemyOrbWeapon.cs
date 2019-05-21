@@ -53,20 +53,31 @@ public class EnemyOrbWeapon : MonoBehaviour {
 		GameObject playerShip = GameObject.FindWithTag ("PlayerShip");
 
 		// Check the player isn't dead.
-		if (playerShip != null); 
+		if (playerShip != null && gameManager.GMState == GameManager.GameManagerState.GameplayEasy)
 		{
 			// Spawn bullet objects at each firing position/rotation.
 
+			Instantiate(enemyBullet, enemyFirePoint01.position, enemyFirePoint01.rotation);
+			Instantiate(enemyBullet, enemyFirePoint02.position, enemyFirePoint02.rotation);
+
+			// Select a sound from the array (we are using only one in this example) and play it.
+			firingSounds [UnityEngine.Random.Range (0, firingSounds.Length)].Play ();
+		} else if (playerShip !=null && gameManager.GMState == GameManager.GameManagerState.GameplayMedium) {
+			Instantiate(enemyBullet, enemyFirePoint01.position, enemyFirePoint01.rotation);
+			Instantiate(enemyBullet, enemyFirePoint02.position, enemyFirePoint02.rotation);
+			Instantiate(enemyBullet, enemyFirePoint03.position, enemyFirePoint03.rotation);
+			Instantiate(enemyBullet, enemyFirePoint04.position, enemyFirePoint04.rotation);
+			firingSounds [UnityEngine.Random.Range (0, firingSounds.Length)].Play ();
+		} else if (playerShip != null && gameManager.GMState == GameManager.GameManagerState.GameplayHard) {
 			Instantiate(enemyBullet, enemyFirePoint01.position, enemyFirePoint01.rotation);
 			Instantiate(enemyBullet, enemyFirePoint02.position, enemyFirePoint02.rotation);
 			Instantiate(enemyBullet, enemyFirePoint03.position, enemyFirePoint03.rotation);
 			Instantiate(enemyBullet, enemyFirePoint04.position, enemyFirePoint04.rotation);
 			Instantiate(enemyBullet, enemyFirePoint05.position, enemyFirePoint05.rotation);
 			Instantiate(enemyBullet, enemyFirePoint06.position, enemyFirePoint06.rotation);
-			
-
-			// Select a sound from the array (we are using only one in this example) and play it.
 			firingSounds [UnityEngine.Random.Range (0, firingSounds.Length)].Play ();
 		}
+
+	 }
+
 	}
-}
