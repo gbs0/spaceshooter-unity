@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EnemyOrbWeapon : MonoBehaviour {
+	
+	// Need to pick (GMState) variable on GameManagerState public enum;
+	public GameObject gameManager;
 
 	public Transform enemyFirePoint01;
 	public Transform enemyFirePoint02;

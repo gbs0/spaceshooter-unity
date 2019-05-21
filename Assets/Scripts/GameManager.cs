@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour {
 	public enum GameManagerState
 	{
 		Opening,
-		Gameplay,
+		GameplayEasy,
+		GameplayMedium,
+		GameplayHard,
 		GameOver,
 	}
 
-	GameManagerState GMState;
+	public GameManagerState GMState;
 	
 	void Start () 
 	{

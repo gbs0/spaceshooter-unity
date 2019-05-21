@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyWeapon : MonoBehaviour {
 	
+	
 	public bool isHomingWeapon; // Check this if you want to use the HomingBullet ammo prefabs.
 	public GameObject enemyBullet; // Homing or Standard ammo prefab goes here.
 
@@ -74,7 +75,7 @@ public class EnemyWeapon : MonoBehaviour {
 			// Compute the bullets direction.
 			Vector2 direction = playerShip.transform.position - bullet01.transform.position;
 			// Set the bullets direction.
-			bullet01.GetComponent<EnemyHomingBullet>().SetDirection (direction);
+			bullet01.GetComponent<EnemyHomingBullet>().SetDirection(direction);
 		}
 	}
 }

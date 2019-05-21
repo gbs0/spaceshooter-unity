@@ -3,7 +3,10 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour {
 	
+	// Need to pick (GMState) variable on GameManagerState public enum;
 	public GameObject gameManager;
+
+
 	public GameObject[] enemyShips;
 
 	float maxSpawnRateInSeconds = 5f;
