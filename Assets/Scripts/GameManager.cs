@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour {
 	public enum GameManagerState
 	{
 		Opening,
-		Gameplay,
+		GameplayEasy,
+		GameplayMedium,
+		GameplayHard,
 		GameOver,
 	}
 
-	GameManagerState GMState;
+	public GameManagerState GMState;
 	
 	void Start () 
 	{
@@ -56,7 +58,9 @@ public class GameManager : MonoBehaviour {
 			// Show Stage Background
 			StageBackground.SetActive(true);
 				break;
-		case GameManagerState.Gameplay:
+		case GameManagerState.GameplayEasy:
+		case GameManagerState.GameplayMedium:
+		case GameManagerState.GameplayHard:
 			NebulaController.SetActive(true);
 			StarGenerator.SetActive(true);
 			PlanetController.SetActive(true);
@@ -102,10 +106,9 @@ public class GameManager : MonoBehaviour {
 		UpdateGameManagerState ();
 	}
 	// Call this function when the "Play" button is pressed.
-	public void StartGamePlay()
+	public void StartGamePlay(int difficulty)
 	{
-		GMState = GameManagerState.Gameplay;
-		UpdateGameManagerState ();
+		SetGameManagerState((GameManagerState)difficulty);
 	}
 	// This will reload the main scene.
 	public void RestartGamePlay()
