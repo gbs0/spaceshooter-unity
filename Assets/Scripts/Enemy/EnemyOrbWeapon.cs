@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class EnemyOrbWeapon : MonoBehaviour {
-	
+
 	// Need to pick (GMState) variable on GameManagerState public enum;
-	public GameObject gameManager;
+	public GameManager gameManager;
 
 	public Transform enemyFirePoint01;
 	public Transform enemyFirePoint02;
@@ -24,8 +24,15 @@ public class EnemyOrbWeapon : MonoBehaviour {
 
 	float cooldownTimer = 0;
 
+	void Start()
+	{
+		gameManager = FindObjectOfType<GameManager>();
+		print(gameManager.GMState);
+	}
+
 	void Update()
 	{
+		
 		cooldownTimer -= Time.deltaTime;
 
 		if (cooldownTimer <= 0) 
