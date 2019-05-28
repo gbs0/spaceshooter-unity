@@ -83,6 +83,10 @@ public class GameManager : MonoBehaviour {
 			// Start the power up spawner.
 			powerUpSpawner.GetComponent<PowerUpSpawner>().SchedulePowerUpSpawner();
 				break;
+		case GameManagerState.Credits:
+			NebulaController.SetActive(false);
+			StarGenerator.SetActive(false);
+			break;
 		case GameManagerState.GameOver:
 			// Stop the timer.
 			timerText.GetComponent<TimeCounter>().StopTimeCounter();
