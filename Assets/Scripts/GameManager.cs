@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -14,15 +14,20 @@ public class GameManager : MonoBehaviour {
 	public GameObject GameOver;
 	public GameObject GameTitle;
 	public GameObject StageBackground;
+	public GameObject PlanetController;
+	public GameObject StarGenerator;
+	public GameObject NebulaController;
 
 	public enum GameManagerState
 	{
 		Opening,
-		Gameplay,
+		GameplayEasy,
+		GameplayMedium,
+		GameplayHard,
 		GameOver,
 	}
 
-	GameManagerState GMState;
+	public GameManagerState GMState;
 	
 	void Start () 
 	{
@@ -37,6 +42,9 @@ public class GameManager : MonoBehaviour {
 		switch (GMState) 
 		{
 		case GameManagerState.Opening:
+			NebulaController.SetActive(false);
+			StarGenerator.SetActive(false);
+			PlanetController.SetActive(false);
 			// Show the cursor.
 			Cursor.visible = true;
 			// Hide the game over text.
@@ -50,7 +58,12 @@ public class GameManager : MonoBehaviour {
 			// Show Stage Background
 			StageBackground.SetActive(true);
 				break;
-		case GameManagerState.Gameplay:
+		case GameManagerState.GameplayEasy:
+		case GameManagerState.GameplayMedium:
+		case GameManagerState.GameplayHard:
+			NebulaController.SetActive(true);
+			StarGenerator.SetActive(true);
+			PlanetController.SetActive(true);
 			StageBackground.SetActive(false);
 			// Hide the cursor.
 			// Cursor.visible = false;
@@ -80,6 +93,7 @@ public class GameManager : MonoBehaviour {
 			powerUpSpawner.GetComponent<PowerUpSpawner>().UnschedulePowerUpSpawner();
 			// Display the game over text.
 			GameOver.SetActive (true);
+			StarGenerator.SetActive(false);
 			// Change the game state to 'Opening' after 5 seconds.
 			Invoke("RestartGamePlay", 5f);
 			break;
@@ -89,13 +103,12 @@ public class GameManager : MonoBehaviour {
 	public void SetGameManagerState(GameManagerState state)
 	{
 		GMState = state;
-		UpdateGameManagerState ();
+		UpdateGameManagerState();
 	}
 	// Call this function when the "Play" button is pressed.
-	public void StartGamePlay()
+	public void StartGamePlay(int difficulty)
 	{
-		GMState = GameManagerState.Gameplay;
-		UpdateGameManagerState ();
+		SetGameManagerState((GameManagerState)difficulty);
 	}
 	// This will reload the main scene.
 	public void RestartGamePlay()
