@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BackgroundController.cs" />
      <Compile Include="Assets\Scripts\BGObject.cs" />
+     <Compile Include="Assets\Scripts\Boss\Boss.cs" />
      <Compile Include="Assets\Scripts\BossSpawner.cs" />
      <Compile Include="Assets\Scripts\ComboText.cs" />
      <Compile Include="Assets\Scripts\Destroy.cs" />
