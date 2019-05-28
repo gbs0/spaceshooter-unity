@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour {
 		switch (GMState) 
 		{
 		case GameManagerState.Opening:
-			NebulaController.SetActive(false);
-			StarGenerator.SetActive(false);
+			NebulaController.SetActive(true);
+			StarGenerator.SetActive(true);
 			PlanetController.SetActive(false);
 			// Show the cursor.
 			Cursor.visible = true;
