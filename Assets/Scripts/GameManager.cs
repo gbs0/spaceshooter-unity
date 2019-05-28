@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 		GameplayMedium,
 		GameplayHard,
 		GameOver,
+		Credits,
 	}
 
 	public GameManagerState GMState;
