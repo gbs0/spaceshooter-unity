@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour {
 		case GameManagerState.Credits:
 			NebulaController.SetActive(false);
 			StarGenerator.SetActive(false);
+			
 			break;
 		case GameManagerState.GameOver:
 			// Stop the timer.
