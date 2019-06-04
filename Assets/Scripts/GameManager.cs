@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 		GameplayMedium,
 		GameplayHard,
 		GameOver,
+		Credits,
 	}
 
 	public GameManagerState GMState;
@@ -42,8 +43,8 @@ public class GameManager : MonoBehaviour {
 		switch (GMState) 
 		{
 		case GameManagerState.Opening:
-			NebulaController.SetActive(false);
-			StarGenerator.SetActive(false);
+			NebulaController.SetActive(true);
+			StarGenerator.SetActive(true);
 			PlanetController.SetActive(false);
 			// Show the cursor.
 			Cursor.visible = true;
@@ -82,6 +83,11 @@ public class GameManager : MonoBehaviour {
 			// Start the power up spawner.
 			powerUpSpawner.GetComponent<PowerUpSpawner>().SchedulePowerUpSpawner();
 				break;
+		case GameManagerState.Credits:
+			NebulaController.SetActive(false);
+			StarGenerator.SetActive(false);
+			
+			break;
 		case GameManagerState.GameOver:
 			// Stop the timer.
 			timerText.GetComponent<TimeCounter>().StopTimeCounter();

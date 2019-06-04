@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
 {
+    public GameObject gameManager;
+
+
+		public GameObject[] bossShips;
+
+		float maxSpawnRateInSeconds = 5f;
+
+
     // Start is called before the first frame update
     void Start()
     {
